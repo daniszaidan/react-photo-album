@@ -1,0 +1,29 @@
+* {
+  /* border: 1px solid black; */
+}
+.rootError404 {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.rootError404 h2 {
+  text-align: center;
+}
+
+.rootError404 button {
+  background-color: #ed3338 !important;
+  color: white !important;
+  transition: all 0.3s;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
