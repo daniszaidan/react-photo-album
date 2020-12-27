@@ -12,5 +12,7 @@ const Suspensed = (Element) =>
 
 export default {
   Error404: Suspensed(React.lazy(() => import('./Error404'))),
-  ProductList: Suspensed(React.lazy(() => import('./ProductList'))),
+  Main: Suspensed(React.lazy(() => import('./Main'))),
+  Album: Suspensed(React.lazy(() => import('./Album'))),
+  User: Suspensed(React.lazy(() => import('./User'))),
 };

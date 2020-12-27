@@ -1,0 +1,64 @@
+*{
+  /* border: 1px solid black !important; */
+}
+
+.appbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.appbar .appbar-header{
+  display: flex;
+  align-items: center;
+}
+.appbar .appbar-header h1{
+  font-size: 1.8rem;
+  color: #A552F8;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+  text-transform: capitalize;
+}
+.button-back{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  background: white;
+  color: #5d5d5d;
+  cursor: pointer;
+  box-shadow: 0px 0px 30px rgba(99, 99, 142, 0.3);
+  transition: all .3s;
+}
+.button-back:hover{
+  background-color: #e6e6e6;
+}
+.filterFrame{
+  display: flex;
+}
+.filterFrame button{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #A552F8 0%, #BF85FA 100%);
+  color: white;
+  cursor: pointer;
+}
+.filterFrame svg{
+  font-size: 1.5rem;
+}

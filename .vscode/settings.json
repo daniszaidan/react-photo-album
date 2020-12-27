@@ -1,0 +1,9 @@
+{
+    "eslint.run": "onSave",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "files.associations": {
+        "*.js": "javascriptreact"
+    },
+}

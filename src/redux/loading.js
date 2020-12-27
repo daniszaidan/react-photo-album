@@ -1,21 +1,20 @@
 const initialState = {
-  // data: [],
-  data: "sss",
-  // isOpenDrawer: false,
+  isLoading: true,
 };
 
 export default function reducer(state = initialState, action) {
-  const {
-    type,
-    data,
-    // isOpenDrawer,
-  } = action;
+  const { type } = action;
 
   switch (type) {
-    case 'data':
+    case 'DONE_LOADING':
       return {
         ...state,
-        data,
+        isLoading: false,
+      };
+    case 'LOADING':
+      return {
+        ...state,
+        isLoading: true,
       };
     default:
       return state;
