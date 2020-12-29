@@ -7,8 +7,16 @@ export const getAlbum = () => {
       method: 'get',
       url: 'https://jsonplaceholder.typicode.com/albums',
     })
-      .then((response) => {
-        dispatch({ type: 'DATA_ALBUM', dataAlbum: response.data });
+      .then(async (response) => {
+        const dataPromises = response.data.map(async (item) => {
+          const userData = await getUserById(item.userId);
+          return {
+            ...item,
+            userData,
+          };
+        });
+        const data = await Promise.all(dataPromises);
+        dispatch({ type: 'DATA_ALBUM', dataAlbum: data });
         dispatch({ type: 'DONE_LOADING' });
       })
       .catch((error) => {
@@ -17,4 +25,11 @@ export const getAlbum = () => {
         return error;
       });
   };
+};
+
+const getUserById = async (id) => {
+  const response = await axios.get(
+    `https://jsonplaceholder.typicode.com/users/${id}`
+  );
+  return response.data;
 };

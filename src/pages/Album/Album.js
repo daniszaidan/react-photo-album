@@ -6,11 +6,20 @@ import './Album.css';
 import AppBar from './../../components/AppBar';
 import CardPhoto from './../../components/CardPhoto';
 import Skeleton from './../../components/Skeleton';
+import ModalPhoto from './../../components/ModalPhoto';
 
 export default function Album(props) {
   const dispatch = useDispatch();
-  const { dataPhoto, isLoading, userLogin } = useSelector((state) => ({
+  const {
+    isOpenModalPhoto,
+    dataPhoto,
+    photoSelected,
+    isLoading,
+    userLogin,
+  } = useSelector((state) => ({
+    isOpenModalPhoto: state.album.isOpenModalPhoto,
     dataPhoto: state.album.dataPhoto,
+    photoSelected: state.album.photoSelected,
     isLoading: state.loading.isLoading,
     userLogin: state.user.userLogin,
   }));
@@ -23,19 +32,27 @@ export default function Album(props) {
   const filteredAlbum =
     dataPhoto && dataPhoto.filter((item) => item.albumId === album.id);
 
-  // console.log(album, 'album');
-  // console.log(dataPhoto, 'dataPhoto');
-  // console.log(userLogin, 'user data');
-
   const handleFavorite = (item) => {
-    // console.log('ss', item);
     dispatch(actions.setFavoritePhoto(item));
-    // console.log(userLogin, 'user data');
+  };
+
+  const handleOpenModalPhoto = (data) => {
+    dispatch(actions.ModalPhotoToggle(true));
+    dispatch(actions.setPhotoSelected(data));
+  };
+  const handleCloseModalPhoto = () => {
+    dispatch(actions.ModalPhotoToggle(false));
   };
 
   return (
     <div className="root">
       <div className="wrapper">
+        <ModalPhoto
+          open={isOpenModalPhoto}
+          onClose={handleCloseModalPhoto}
+          photoSelected={photoSelected}
+          userLogin={userLogin}
+        />
         <AppBar title={album.title} backButton={true} />
 
         <div className="clearfix container">
@@ -58,6 +75,7 @@ export default function Album(props) {
                   data={item}
                   handleFavorite={() => handleFavorite(item)}
                   userLogin={userLogin}
+                  handleOpenModalPhoto={() => handleOpenModalPhoto(item)}
                 />
               </div>
             ))

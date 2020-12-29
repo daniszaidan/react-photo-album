@@ -21,27 +21,32 @@ const initialState = {
       catchPhrase: 'Multi-layered client-server neural-net',
       bs: 'harness real-time e-markets',
     },
-    comments: [],
+    comments: [
+      {
+        photoId: 1,
+        comment: 'waw bagus sekali',
+      },
+      {
+        photoId: 1,
+        comment: 'gud',
+      },
+      {
+        photoId: 2,
+        comment: 'zeeb',
+      },
+    ],
     favorites: [1, 3, 7],
   },
+  dataUser: [],
+  errorDataUser: '',
+  albumUser: [],
 };
 
 export default function reducer(state = initialState, action) {
-  const { type, userLogin, idPhoto, idUser } = action;
-  // console.log(idPhoto, 'idPhoto gan');
-  // console.log(idUser, 'idUser gan');
+  const { type, dataUser, idPhoto, errorDataUser, albumUser } = action;
 
   switch (type) {
-    case 'USER_LOGIN':
-      return {
-        ...state,
-        userLogin,
-      };
     case 'FAV_DATA_PHOTO':
-      // const filteredUserLogin = dataPhoto.filter((item) => item.id === id);
-      // console.log(filteredPhoto, 'filteredPhoto');
-      // console.log(id, 'id');
-
       return {
         ...state,
         userLogin: {
@@ -49,15 +54,21 @@ export default function reducer(state = initialState, action) {
           favorites: [...state.userLogin.favorites, idPhoto],
         },
       };
-    // return {
-    //   ...state,
-    //   userLogin: {
-    //     [id]: {
-    //       ...state.userLogin.id[id],
-    //       comments: 'action.someValue',
-    //     },
-    //   },
-    // };
+    case 'DATA_USER':
+      return {
+        ...state,
+        dataUser,
+      };
+    case 'ERROR_DATA_USER':
+      return {
+        ...state,
+        errorDataUser,
+      };
+    case 'DATA_ALBUM_USER':
+      return {
+        ...state,
+        albumUser,
+      };
     default:
       return state;
   }

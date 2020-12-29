@@ -1,6 +1,7 @@
 import React from 'react';
 import './AppBar.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import PersonIcon from '@material-ui/icons/Person';
 import TuneIcon from '@material-ui/icons/Tune';
@@ -13,6 +14,12 @@ export default function AppBar(props) {
       ? `${title && title.slice(0, 20)}...`
       : title;
   };
+
+  const { userLogin } = useSelector((state) => ({
+    userLogin: state.user.userLogin,
+  }));
+
+  console.log('userLogin', userLogin);
 
   return (
     <div className="appbar">
@@ -36,7 +43,12 @@ export default function AppBar(props) {
         ) : (
           false
         )}
-        <Link to="/user">
+        <Link
+          to={{
+            pathname: `/user/${userLogin.name}`,
+            state: { userData: userLogin },
+          }}
+        >
           {!isUserPage ? (
             <button className="hover">
               <PersonIcon />

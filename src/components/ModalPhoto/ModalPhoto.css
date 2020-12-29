@@ -1,0 +1,130 @@
+*{
+  /* border: 1px solid black; */
+}
+.dialog-root{
+  padding: 30px !important;
+}
+.dialog-root .CardPhotoImg{
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+.photo-title{
+  text-transform: capitalize;
+  margin-top: 15px;
+  font-weight: 500;
+}
+.comment-frame{
+  display: flex;
+  margin: 30px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment-frame .form-input{
+	width: calc(100% - 50px);
+  margin-right: 15px;
+	height: auto;
+	position: relative;
+}
+.comment-frame .form-input input{
+	width: 100%;
+	border: none;
+	background: none;
+	outline: none;
+	border-bottom: 1px solid rgba(0,0,0,0.12);
+	transition: all .3s;
+	padding: 15px 0 5px 0;
+	font-size: 1.1rem;
+  color: #5d5d5d;
+}
+.comment-frame .form-input .label{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 10px 0;
+	pointer-events: none;
+	font-size: 14px;
+    color: #757575;
+	font-weight: 400;
+	transition: all .3s cubic-bezier(0.4,0,0.2,1);
+}
+.comment-frame .form-input input:focus ~ .label{
+	top: -20px;
+	left: 0;
+	color: #A552F8;
+	font-size: 12px;
+}
+.comment-frame .form-input input:valid ~ .label{
+	top: -20px;
+	left: 0;
+  font-size: .9rem;	
+}
+.comment-frame .form-input input:focus{
+	border-bottom: 2px solid#A552F8;
+}
+.comment-frame button{
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #A552F8 0%, #BF85FA 100%);
+  color: white;
+  cursor: pointer;
+}
+.comment-frame button svg{
+  font-size: 1.1rem;
+}
+
+.card-comment{
+  background-color:  #A552F8;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+.card-comment .profile-frame{
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255, .15);
+  padding: 7px;
+  border-radius: 5px;
+  transition: all .3s;
+}
+.card-comment .profile-frame:hover{
+  background-color: rgb(255, 255, 255, .3);
+}
+.card-comment .profile-icon{
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background: white;
+  color: #A552F8;
+  cursor: pointer;
+}
+.card-comment .profile-icon svg{
+  font-size: .9rem;
+}
+.card-comment .profile-name{
+  color: white;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: .8rem;
+}
+.card-comment p{
+  color:white;
+  margin-top: 10px;
+  font-size: .9rem;
+}

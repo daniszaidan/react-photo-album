@@ -9,7 +9,8 @@ import Skeleton from './../../components/Skeleton';
 
 export default function Main(props) {
   const dispatch = useDispatch();
-  const { dataAlbum, isLoading } = useSelector((state) => ({
+  const { pastelColor, dataAlbum, isLoading } = useSelector((state) => ({
+    pastelColor: state.main.pastelColor,
     dataAlbum: state.main.dataAlbum,
     isLoading: state.loading.isLoading,
   }));
@@ -18,24 +19,16 @@ export default function Main(props) {
     dispatch(actions.getAlbum());
   }, []);
 
-  const pastelColor = [
-    '#a3ddcb',
-    '#e6b566',
-    '#e5707e',
-    '#cd5d7d',
-    '#a7c5eb',
-    '#949cdf',
-    '#999b84',
-    '#d8ac9c',
-    '#726a95',
-    '#709fb0',
-    '#a0c1b8',
-  ];
-
   const getRandomColor = () => {
     const item = pastelColor[Math.floor(Math.random() * pastelColor.length)];
     return item;
   };
+
+  const getUserById = (id) => {
+    // dispatch(actions.getUserById(id));
+  };
+
+  // console.log('dataAlbum', dataAlbum);
 
   return (
     <div className="root">

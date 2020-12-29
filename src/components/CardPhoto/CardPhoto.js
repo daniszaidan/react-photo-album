@@ -8,7 +8,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import CommentIcon from '@material-ui/icons/Comment';
 
 export default function CardPhoto(props) {
-  const { data, handleFavorite, userLogin } = props;
+  const { data, handleFavorite, handleOpenModalPhoto, userLogin } = props;
   const isFav = userLogin.favorites.includes(data.id) ? true : false;
 
   return (
@@ -24,9 +24,13 @@ export default function CardPhoto(props) {
         />
         <div className="img-action">
           <button className="button" onClick={handleFavorite}>
-            {isFav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            {isFav ? (
+              <FavoriteIcon className="favorite-icon favorite-icon-red" />
+            ) : (
+              <FavoriteBorderIcon className="favorite-icon" />
+            )}
           </button>
-          <button className="button">
+          <button className="button" onClick={handleOpenModalPhoto}>
             <CommentIcon />
           </button>
         </div>

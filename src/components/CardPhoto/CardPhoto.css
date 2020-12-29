@@ -71,6 +71,16 @@
   cursor: pointer;
   transform: translateY(50px);
 }
+.CardPhoto .img-action .button .favorite-icon-red{
+  color: #E85858;
+  transition: all .3s;
+}
+.CardPhoto .img-action .button .favorite-icon{
+  transition: all .3s;
+}
+.CardPhoto .img-action .button:active .favorite-icon{
+  transform: scale(1.5);
+}
 .CardPhoto .img-action .button:hover{
   background-color: #e6e6e6;
 }
