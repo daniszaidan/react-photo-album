@@ -3,6 +3,7 @@ const initialState = {
   errorDataPhoto: '',
   isOpenModalPhoto: false,
   photoSelected: {},
+  tempComment: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -12,6 +13,7 @@ export default function reducer(state = initialState, action) {
     errorDataPhoto,
     isOpenModalPhoto,
     photoSelected,
+    tempComment,
   } = action;
 
   switch (type) {
@@ -34,6 +36,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         photoSelected,
+      };
+    case 'SET_COMMENT':
+      return {
+        ...state,
+        tempComment,
       };
     // case 'FAV_DATA_PHOTO':
     //   // const filteredPhoto = dataPhoto.filter((item) => item.id === id);

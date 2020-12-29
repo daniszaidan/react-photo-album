@@ -14,12 +14,14 @@ export default function Album(props) {
     isOpenModalPhoto,
     dataPhoto,
     photoSelected,
+    tempComment,
     isLoading,
     userLogin,
   } = useSelector((state) => ({
     isOpenModalPhoto: state.album.isOpenModalPhoto,
     dataPhoto: state.album.dataPhoto,
     photoSelected: state.album.photoSelected,
+    tempComment: state.album.tempComment,
     isLoading: state.loading.isLoading,
     userLogin: state.user.userLogin,
   }));
@@ -44,6 +46,23 @@ export default function Album(props) {
     dispatch(actions.ModalPhotoToggle(false));
   };
 
+  const handleChange = (event) => {
+    const dataComment = {
+      comment: event.target.value,
+    };
+    dispatch(actions.setTempComment(event.target.value));
+  };
+  const handleSubmitComment = () => {
+    if (tempComment.length !== 0) {
+      const dataComment = {
+        photoId: photoSelected.id,
+        comment: tempComment,
+      };
+      dispatch(actions.setCommentPhoto(dataComment));
+      dispatch(actions.setTempComment(''));
+    }
+  };
+
   return (
     <div className="root">
       <div className="wrapper">
@@ -52,6 +71,9 @@ export default function Album(props) {
           onClose={handleCloseModalPhoto}
           photoSelected={photoSelected}
           userLogin={userLogin}
+          comment={tempComment}
+          handleChange={handleChange}
+          handleSubmitComment={handleSubmitComment}
         />
         <AppBar title={album.title} backButton={true} />
 
@@ -76,6 +98,7 @@ export default function Album(props) {
                   handleFavorite={() => handleFavorite(item)}
                   userLogin={userLogin}
                   handleOpenModalPhoto={() => handleOpenModalPhoto(item)}
+                  photoSelected={photoSelected}
                 />
               </div>
             ))

@@ -8,8 +8,22 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import CommentIcon from '@material-ui/icons/Comment';
 
 export default function CardPhoto(props) {
-  const { data, handleFavorite, handleOpenModalPhoto, userLogin } = props;
+  const {
+    data,
+    handleFavorite,
+    handleOpenModalPhoto,
+    userLogin,
+    photoSelected,
+  } = props;
   const isFav = userLogin.favorites.includes(data.id) ? true : false;
+  // const isComment = userLogin.comments.includes(data.id) ? true : false;
+  // console.log('userLogin', userLogin);
+
+  const commentPhotoSelected = [];
+  const dataComment = userLogin.comments.map((item) => {
+    const isComment =
+      item.photoId === data.id ? commentPhotoSelected.push(item) : false;
+  });
 
   return (
     <div className="CardPhoto">
@@ -31,6 +45,9 @@ export default function CardPhoto(props) {
             )}
           </button>
           <button className="button" onClick={handleOpenModalPhoto}>
+            <div className="comment-count">
+              <span>{commentPhotoSelected.length}</span>
+            </div>
             <CommentIcon />
           </button>
         </div>

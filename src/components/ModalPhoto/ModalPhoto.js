@@ -1,5 +1,6 @@
 import React from 'react';
 import './ModalPhoto.css';
+import * as actions from './../../pages/Album/action';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import thumbnail from './../../assets/thumbnail.gif';
@@ -8,7 +9,15 @@ import SendIcon from '@material-ui/icons/Send';
 import PersonIcon from '@material-ui/icons/Person';
 
 export default function ModalPhoto(props) {
-  const { open, onClose, photoSelected, userLogin } = props;
+  const {
+    open,
+    onClose,
+    photoSelected,
+    userLogin,
+    comment,
+    handleChange,
+    handleSubmitComment,
+  } = props;
   // console.log('photoSelected', photoSelected);
   // const isFav = userLogin.comments.includes(photoSelected.id) ? true : false;
   // console.log('userLogin.comments', userLogin.comments);
@@ -19,6 +28,11 @@ export default function ModalPhoto(props) {
         ? commentPhotoSelected.push(item)
         : false;
   });
+
+  // const [comment, setComment] = React.useState('');
+  // const handleChange = (event) => {
+  //   setComment(event.target.value);
+  // };
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth={true} maxWidth="sm">
@@ -36,10 +50,10 @@ export default function ModalPhoto(props) {
         </p>
         <div className="comment-frame">
           <div class="form-input">
-            <input type="text" />
+            <input type="text" value={comment} onChange={handleChange} />
             <label class="label">Comment</label>
           </div>
-          <button>
+          <button onClick={handleSubmitComment}>
             <SendIcon />
           </button>
         </div>

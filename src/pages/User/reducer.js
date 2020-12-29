@@ -43,7 +43,14 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  const { type, dataUser, idPhoto, errorDataUser, albumUser } = action;
+  const {
+    type,
+    dataUser,
+    idPhoto,
+    errorDataUser,
+    albumUser,
+    dataComment,
+  } = action;
 
   switch (type) {
     case 'FAV_DATA_PHOTO':
@@ -52,6 +59,14 @@ export default function reducer(state = initialState, action) {
         userLogin: {
           ...state.userLogin,
           favorites: [...state.userLogin.favorites, idPhoto],
+        },
+      };
+    case 'COMMENT_DATA_PHOTO':
+      return {
+        ...state,
+        userLogin: {
+          ...state.userLogin,
+          comments: [...state.userLogin.comments, dataComment],
         },
       };
     case 'DATA_USER':

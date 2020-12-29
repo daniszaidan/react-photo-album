@@ -50,3 +50,21 @@ export function ModalPhotoToggle(isOpenModalPhoto) {
     });
   };
 }
+
+export function setTempComment(value) {
+  return (dispatch) => {
+    dispatch({
+      type: 'SET_COMMENT',
+      tempComment: value,
+    });
+  };
+}
+
+export const setCommentPhoto = (dataComment) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'COMMENT_DATA_PHOTO',
+      dataComment,
+    });
+  };
+};
