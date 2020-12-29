@@ -14,3 +14,49 @@
     margin: 0 -15px;
     margin-top: 60px;
 }
+.user-info{
+    background: linear-gradient(135deg, #A552F8 0%, #BF85FA 100%);
+    box-shadow: 0px 0px 50px rgba(99, 99, 142, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+}
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.table-responsive {
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+}
+.table {
+    width: 100%;
+    /* max-width: 100%; */
+    min-width: 500px;
+    background-color: transparent;
+	transition: .5s;
+}
+.table tr, .table tr td, .table tr th {
+    transition: .5s;
+    color: white;
+}
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+	font-size: 1rem;
+    font-weight: 300;
+}
+.table .table-number{
+	width: 10px;
+	text-align: center;
+}
+.table thead th {
+    vertical-align: bottom;
+	border-top: none;
+    text-align: left;
+}
+.table-hover tbody tr:hover{
+    background-color: rgb(255, 255, 255, .3);
+    
+}

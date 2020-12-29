@@ -1,5 +1,6 @@
 const initialState = {
   dataAlbum: [],
+  dataUser: [],
   errorDataAlbum: '',
   pastelColor: [
     '#e2aa50',
@@ -13,10 +14,17 @@ const initialState = {
     '#709fb0',
     '#a0c1b8',
   ],
+  isOpenModalFilter: false,
 };
 
 export default function reducer(state = initialState, action) {
-  const { type, dataAlbum, errorDataAlbum } = action;
+  const {
+    type,
+    dataAlbum,
+    errorDataAlbum,
+    isOpenModalFilter,
+    dataUser,
+  } = action;
 
   switch (type) {
     case 'DATA_ALBUM':
@@ -24,10 +32,20 @@ export default function reducer(state = initialState, action) {
         ...state,
         dataAlbum,
       };
+    case 'DATA_USER':
+      return {
+        ...state,
+        dataUser,
+      };
     case 'ERROR_DATA_ALBUM':
       return {
         ...state,
         errorDataAlbum,
+      };
+    case 'MODAL_FILTER_TOGGLE':
+      return {
+        ...state,
+        isOpenModalFilter,
       };
     default:
       return state;

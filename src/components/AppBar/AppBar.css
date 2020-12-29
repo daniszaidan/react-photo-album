@@ -62,3 +62,18 @@
 .filterFrame svg{
   font-size: 1.5rem;
 }
+
+@media (max-width: 800px){
+  .appbar{
+    flex-direction: column;
+    align-items: unset;
+  }
+  .filterFrame{
+    margin-top: 10px;
+  }
+  .filterFrame button{
+    margin-left: unset;
+    margin-right: 15px;
+
+  }
+}

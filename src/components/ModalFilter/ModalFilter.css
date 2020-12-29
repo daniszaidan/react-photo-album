@@ -1,0 +1,10 @@
+*{
+  /* border: 1px solid black; */
+}
+.dialog-root{
+  padding: 30px !important;
+}
+.dialog-title{
+  font-weight: 500;
+  margin-bottom: 20px;
+}

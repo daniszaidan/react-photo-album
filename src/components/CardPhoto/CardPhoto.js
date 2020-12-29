@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable array-callback-return */
 import React from 'react';
 import './CardPhoto.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -8,13 +10,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import CommentIcon from '@material-ui/icons/Comment';
 
 export default function CardPhoto(props) {
-  const {
-    data,
-    handleFavorite,
-    handleOpenModalPhoto,
-    userLogin,
-    photoSelected,
-  } = props;
+  const { data, handleFavorite, handleOpenModalPhoto, userLogin } = props;
   const isFav = userLogin.favorites.includes(data.id) ? true : false;
   // const isComment = userLogin.comments.includes(data.id) ? true : false;
   // console.log('userLogin', userLogin);

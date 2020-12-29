@@ -28,7 +28,7 @@ export default function Album(props) {
 
   useEffect(() => {
     dispatch(actions.getAlbumPhoto());
-  }, []);
+  }, [dispatch]);
 
   const album = props.location.state.data;
   const filteredAlbum =
@@ -47,9 +47,6 @@ export default function Album(props) {
   };
 
   const handleChange = (event) => {
-    const dataComment = {
-      comment: event.target.value,
-    };
     dispatch(actions.setTempComment(event.target.value));
   };
   const handleSubmitComment = () => {
@@ -80,19 +77,19 @@ export default function Album(props) {
         <div className="clearfix container">
           {isLoading ? (
             <>
-              <div className="col-4 col-skeleton">
+              <div className="col-4 col-m-6 col-s-12 col-skeleton">
                 <Skeleton />
               </div>
-              <div className="col-4 col-skeleton">
+              <div className="col-4 col-m-6 col-s-12 col-skeleton">
                 <Skeleton />
               </div>
-              <div className="col-4 col-skeleton">
+              <div className="col-4 col-m-6 col-s-12 col-skeleton">
                 <Skeleton />
               </div>
             </>
           ) : (
             filteredAlbum.map((item, index) => (
-              <div className="col-4" key={index}>
+              <div className="col-4 col-m-6 col-s-12" key={index}>
                 <CardPhoto
                   data={item}
                   handleFavorite={() => handleFavorite(item)}

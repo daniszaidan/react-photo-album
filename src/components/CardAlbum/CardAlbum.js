@@ -1,12 +1,11 @@
 import React from 'react';
 import './CardAlbum.css';
-import axios from 'axios';
 
 import { Link } from 'react-router-dom';
 import PersonIcon from '@material-ui/icons/Person';
 
 export default function CardAlbum(props) {
-  const { backgroundColor, data, getUserById } = props;
+  const { backgroundColor, data } = props;
 
   // getUserById(data.userId);
 

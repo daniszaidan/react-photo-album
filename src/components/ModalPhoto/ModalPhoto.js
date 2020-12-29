@@ -1,6 +1,7 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import './ModalPhoto.css';
-import * as actions from './../../pages/Album/action';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import thumbnail from './../../assets/thumbnail.gif';

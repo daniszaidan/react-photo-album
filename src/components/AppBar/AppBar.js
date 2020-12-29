@@ -8,7 +8,13 @@ import TuneIcon from '@material-ui/icons/Tune';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 export default function AppBar(props) {
-  const { title, backButton, filterButton, isUserPage } = props;
+  const {
+    title,
+    backButton,
+    filterButton,
+    isUserPage,
+    handleOpenModalFilter,
+  } = props;
   const newTitle = (title) => {
     return (title && title.length) > 20
       ? `${title && title.slice(0, 20)}...`
@@ -18,8 +24,6 @@ export default function AppBar(props) {
   const { userLogin } = useSelector((state) => ({
     userLogin: state.user.userLogin,
   }));
-
-  console.log('userLogin', userLogin);
 
   return (
     <div className="appbar">
@@ -37,7 +41,7 @@ export default function AppBar(props) {
       </div>
       <div className="filterFrame">
         {filterButton ? (
-          <button className="hover">
+          <button className="hover" onClick={handleOpenModalFilter}>
             <TuneIcon />
           </button>
         ) : (

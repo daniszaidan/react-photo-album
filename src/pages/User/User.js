@@ -10,19 +10,17 @@ import Skeleton from '../../components/Skeleton';
 export default function User(props) {
   const dispatch = useDispatch();
   const userSelected = props.location.state.userData;
-  const { pastelColor, userLogin, albumUser, isLoading } = useSelector(
-    (state) => ({
-      pastelColor: state.main.pastelColor,
-      userLogin: state.user.userLogin,
-      albumUser: state.user.albumUser,
-      isLoading: state.loading.isLoading,
-    })
-  );
+  const { pastelColor, albumUser, isLoading } = useSelector((state) => ({
+    pastelColor: state.main.pastelColor,
+    userLogin: state.user.userLogin,
+    albumUser: state.user.albumUser,
+    isLoading: state.loading.isLoading,
+  }));
 
   useEffect(() => {
     dispatch(actions.getAlbum(userSelected.id));
     // dispatch(actions.getAlbumPhoto(userSelected.id));
-  }, []);
+  }, [dispatch, userSelected.id]);
 
   const getRandomColor = () => {
     const item = pastelColor[Math.floor(Math.random() * pastelColor.length)];
@@ -30,7 +28,6 @@ export default function User(props) {
   };
 
   // console.log(userLogin, 'userLogin');
-  // console.log('albumUser', albumUser);
 
   return (
     <div className="root">
@@ -42,25 +39,52 @@ export default function User(props) {
         />
 
         <div className="clearfix container">
-          <div className="clearfix container">
-            {JSON.stringify(userSelected)}
+          <div className="col-12 ">
+            <div className="user-info">
+              <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                    <tr>
+                      <td>Name</td>
+                      <td>{userSelected.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Address</td>
+                      <td>{`${userSelected.address.city}, ${userSelected.address.street}`}</td>
+                    </tr>
+                    <tr>
+                      <td>Phone</td>
+                      <td>{userSelected.phone}</td>
+                    </tr>
+                    <tr>
+                      <td>Company</td>
+                      <td>{userSelected.company.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Website</td>
+                      <td>{userSelected.website}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
 
           {isLoading ? (
             <>
-              <div className="col-4 col-skeleton">
+              <div className="col-4 col-m-6 col-s-12 col-skeleton">
                 <Skeleton />
               </div>
-              <div className="col-4 col-skeleton">
+              <div className="col-4 col-m-6 col-s-12 col-skeleton">
                 <Skeleton />
               </div>
-              <div className="col-4 col-skeleton">
+              <div className="col-4 col-m-6 col-s-12 col-skeleton">
                 <Skeleton />
               </div>
             </>
           ) : (
             albumUser.map((item, index) => (
-              <div className="col-4" key={index}>
+              <div className="col-4 col-m-6 col-s-12" key={index}>
                 <CardAlbum data={item} backgroundColor={getRandomColor()} />
               </div>
             ))
